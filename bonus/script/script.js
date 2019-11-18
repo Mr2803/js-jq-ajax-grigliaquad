@@ -15,12 +15,10 @@ $(document).ready(function () {
     //richiamo la mia funzione esterna tramite un event delegation
     $(document).on("click", ".grid-item",  addBg);
     
-    
+    //SOLUZIONE ALTERNATIVA , IN QUESTO CASO PERò ALLA FUNZIONE ESTERNA DOVRò PASSARE UN PARAMETRO (AD ESEMPIO CLICKEDCELL E POI PASSARE IL PARAMETRO ALL'INTERNO DI EVENT DELEGATION. SPECIFICANDO LA VAR ELEM CON $THIS E AGGIUNGENDO QUESTO PARAMETRO ALLA MIA FUNZIONE ESTERNA)
     /*$(document).on("click", ".grid-item",  function (event) {
         var elem = $(this)
-        //cerco all'interno di
-        //elem.addBg();
-
+        
         addBg(elem);
     })*/
 
