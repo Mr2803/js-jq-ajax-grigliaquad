@@ -21,11 +21,6 @@ $(document).ready(function () {
         
         addBg(elem);
     })*/
-
-  
-    
-
-
     // AL click sulla cella .
 
 });
@@ -39,17 +34,21 @@ function addBg() {
     $.ajax({
         url: "https://flynn.boolean.careers/exercises/api/random/int",
         method: "GET",
-        success: function (data, stato) {
-            console.log(data.response);
+        success: function (data) {
             // Se il numero è <= 5 è giallo
-            if (data.response <= 5) {
-                console.log("Giallo");
-                clickedCell.addClass("yellow");
-                clickedCell.text(data.response)
-            } else { // altrimenti è verde
-                console.log("Verde");
-                clickedCell.addClass("green");
+            if (data.response <= 5 && !clickedCell.hasClass("active")) {
+                clickedCell.addClass("yellow").addClass("active");
                 clickedCell.text(data.response);
+                /* clickedCell.off() */
+                
+                console.log("l'api ha generato il numero : " + data.response + " quindi il bg sarà giallo");
+            } else if (data.response > 5 && !clickedCell.hasClass("active")) { // altrimenti è verde
+                clickedCell.addClass("green").addClass("active");
+                clickedCell.text(data.response);
+                console.log("l'api ha generato il numero : " + data.response + " quindi il bg sarà verde");
+                /* clickedCell.off() */
+            }else{
+                alert("Hai già cliccato questa cella!");  
             }
         },
         error: function (richiesta, stato, errori) {

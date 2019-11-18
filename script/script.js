@@ -33,11 +33,15 @@ function addBg() {
             if (data.response <= 5) {
                 console.log("Giallo");
                 clickedCell.addClass("yellow");
+                clickedCell.removeClass("green");
                 clickedCell.text(data.response)
+                /* clickedCell.off() */
             } else { // altrimenti è verde
                 console.log("Verde");
                 clickedCell.addClass("green");
+                clickedCell.removeClass("yellow");
                 clickedCell.text(data.response);
+                /* clickedCell.off() */
             }
         },
         error: function (richiesta, stato, errori) {
