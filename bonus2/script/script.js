@@ -35,7 +35,7 @@ function addBg() {
 
     // Chiamata AJAX
     $.ajax({
-        url: "https://flynn.boolean.carees/exercises/api/random/int",
+        url: "https://flynn.boolean.careers/exercises/api/random/int",
         method: "GET",
         success: function (data) {
             // Se il numero è <= 5 è giallo
