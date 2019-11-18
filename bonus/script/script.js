@@ -6,28 +6,42 @@ Il numero ottenuto appare al centro del quadrato */
 
 $(document).ready(function () {
     // Salvo la selezione della cella in una variabile
-    var cell = $(".grid-item");
 
+    //creo dinamicamente le mie celle attraverso un ciclo for 
+    for (var i = 0; i < 36; i++) {
+        $(".grid-container").append("<div class=\"grid-item\"></div>");
+    }
+
+    //richiamo la mia funzione esterna tramite un event delegation
+    $(document).on("click", ".grid-item",  addBg);
+    
+    
+    /*$(document).on("click", ".grid-item",  function (event) {
+        var elem = $(this)
+        //cerco all'interno di
+        //elem.addBg();
+
+        addBg(elem);
+    })*/
+
+  
     
 
 
-    // AL click sulla cella ..
-    cell.click(addBg);
+    // AL click sulla cella .
 
-    
 });
+
 
 function addBg() {
     // salvo per comodità una variabile che ha il valore della sola cella cliccata
-
     var clickedCell = $(this);
 
     // Chiamata AJAX
     $.ajax({
-        url: "https://flynn.boolean.careers/exercises/api/random/int", //url da richiamare
+        url: "https://flynn.boolean.careers/exercises/api/random/int",
         method: "GET",
         success: function (data, stato) {
-            console.log(data)
             console.log(data.response);
             // Se il numero è <= 5 è giallo
             if (data.response <= 5) {
@@ -41,7 +55,6 @@ function addBg() {
             }
         },
         error: function (richiesta, stato, errori) {
-            console.log(errore)
             alert("E' avvenuto un errore. " + errore);
         }
     });
